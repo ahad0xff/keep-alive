@@ -1,4 +1,4 @@
-name: Muzic
+name: BOT
 
 on:
     push:
@@ -24,11 +24,11 @@ jobs:
            git config --global user.email ${{ secrets.GH_MAIL }}
            git config --global credential.helper store
            echo "https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
-       - name: Running muzic bot
+       - name: Running bot
          timeout-minutes: 350
          continue-on-error: true
          run: |
-           sudo sh muzic.sh
+           sudo sh bot.sh
        - name: Loop workflow
          continue-on-error: true
          run: |
