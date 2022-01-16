@@ -25,8 +25,8 @@ jobs:
            git config --global credential.helper store
            echo "https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
        - name: Cleanup storage
-        run: |
-          sudo sh cleanup.sh
+         run: |
+           sudo sh cleanup.sh
        - name: Running bot
          timeout-minutes: 350
          continue-on-error: true
