@@ -2,6 +2,9 @@ name: BOT
 
 on:
     push:
+      branches:    
+      - 'main'
+      - 'loop.txt'
     workflow_dispatch:
     
 jobs:
