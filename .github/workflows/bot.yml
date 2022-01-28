@@ -2,9 +2,8 @@ name: BOT
 
 on:
     push:
-      branches:    
-      - 'main'
-      - 'loop.txt'
+      paths:
+        - 'loop.txt'
     workflow_dispatch:
     
 jobs:
