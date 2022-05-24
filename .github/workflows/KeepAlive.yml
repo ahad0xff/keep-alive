@@ -1,4 +1,4 @@
-name: BOT
+name: KeepAliveMyApp
 
 on:
     push:
@@ -30,8 +30,7 @@ jobs:
          timeout-minutes: 350
          continue-on-error: true
          run: |
-           pip install python-telegram-bot
-           python3 sbot.py
+           sh KeepAlive.sh
        - name: Loop workflow
          continue-on-error: true
          run: |
