@@ -19,24 +19,21 @@ jobs:
          with:
             all_but_latest: true
             access_token: ${{ secrets.GH_TOKEN }}
-       - name: initialization
-         continue-on-error: true
-         run: |
-           git config --global user.name ${{ secrets.GH_USERNAME }}
-           git config --global user.email ${{ secrets.GH_MAIL }}
-           git config --global credential.helper store
-           echo "https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_TOKEN }}@github.com" > ~/.git-credentials
+
        - name: Keep Alive My App
          timeout-minutes: 350
          continue-on-error: true
          run: |
            sh KeepAlive.sh
+
        - name: Loop workflow
          continue-on-error: true
          run: |
+              git config --global user.name ${{ secrets.GH_USERNAME }}
+              git config --global user.email ${{ secrets.GH_MAIL }}
               git clone https://github.com/${GITHUB_REPOSITORY} loop
               cd loop || exit 1
-              echo $(date -u +%T%P) >> loop.txt
+              echo $(date) >> loop.txt
               git add loop.txt
               git commit -m "Workflow : Loop"
               git push -q https://${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:main
